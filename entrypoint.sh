@@ -1,7 +1,5 @@
 #!/bin/sh
 
-# DATABASE=postgres
-
 if [ "$DATABASE" = "postgres" ]
 then
     echo "Waiting for postgres..."
@@ -14,6 +12,5 @@ then
 fi
 
 python manage.py create_db
-# sudo -u postgres createdb adsDB
 
 exec "$@"
