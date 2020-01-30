@@ -17,14 +17,25 @@ docker-compose up
 
 ### Test
 **1. create ad**
-  - correct request
+  - correct requests
 ```
-curl -X POST -H "Content-Type: application/json" -d '{"name": "myFirstd", "price":"56780", "photos":["ph1.jpeg", "ph2.jpeg"], "description":"blabla"}' http://0.0.0.0:5000/ad
+curl -X POST \
+    -H "Content-Type: application/json" \
+    -d '{"name": "myFirst", "price":"56780", "photos":["http://ph1.jpeg"], "description":"blabla"}'\
+    http://0.0.0.0:5000/ad
+    
+curl -X POST \
+    -H "Content-Type: application/json" \
+    -d '{"name": "mySecond", "price":"123123", "photos":["http://p2.jpeg", "http://p33.jpeg"], "description":"blabla"}'\
+    http://0.0.0.0:5000/ad
 ```
 
   - incorrect data requests *(photos > 3 (or name > 200 symbols or description > 1000 symbols))*
 ```
-curl -X POST -H "Content-Type: application/json" -d '{"name": "myFirstd", "price":"56780", "photos":["ph1.jpeg", "ph2.jpeg", "ph3.jpeg", "ph4.jpeg"], "description":"blabla"}' http://0.0.0.0:5000/ad
+curl -X POST \
+    -H "Content-Type: application/json" \
+    -d '{"name": "myFirstd", "price":"56780", "photos":["ph1.jpeg", "ph2.jpeg", "ph3.jpeg", "ph4.jpeg"], "description":"blabla"}'\
+ http://0.0.0.0:5000/ad
 ```
 
 **2. get ad by id**
@@ -55,7 +66,13 @@ curl -X GET  http://0.0.0.0:5000/ads
 ```
 curl -X GET  http://0.0.0.0:5000/ads/2
 ```
-  or *(sort_by date/price order_by desc/asc)*
+  or *(sort_by date|price order_by desc|asc)*
 ```
-curl -X GET  http://0.0.0.0:5000/ads?sort_by=price&order_by=asc
+curl -X GET  http://0.0.0.0:5000/ads?sort_by=price\&order_by=asc
 ```
+
+
+
+
+
+
